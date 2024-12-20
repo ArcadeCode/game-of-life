@@ -1,6 +1,7 @@
 import random
 from time import sleep
 from args import getargs
+from window import Window
 
 class GameBoard :
     def __init__(self, size: int):
@@ -87,26 +88,25 @@ class GameBoard :
 args = getargs()
 SIZE = args.size
 ITERATIONS = args.iterations
+USING_GUI = args.activateGui
 SEED = args.seed
+
 if SEED == None :
     SEED = random.seed()
 else :
     random.seed(SEED)
 
-print()
 gameboard = GameBoard(SIZE)
-gameboard.generateShuffleGameboard(margin=3)
+if USING_GUI == True :
+    window = Window(SIZE)
+gameboard.generateShuffleGameboard(margin=30)
 
-historic = []
 for i in range(ITERATIONS+1) :
-    historic.append(gameboard.gameboard)
-    gameboard.printGameBoard()
-    print(f"Iteration n°{gameboard.get_iteration()}/{ITERATIONS}")
-    print(f"Seed : {SEED}")
+    if USING_GUI == True :
+        window.update_window(gameboard.gameboard)
+    else :
+        gameboard.printGameBoard()
+        print(f"Iteration n°{gameboard.get_iteration()}/{ITERATIONS}")
+        print(f"Seed : {SEED}")
     sleep(0.1)
     gameboard.iterate()
-
-    #if i > 3 :
-    #    if historic[i-2] == historic[i] :
-    #        print("The simulation is on boucle")
-    #        break
