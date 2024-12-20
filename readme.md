@@ -13,10 +13,6 @@ A simple implementation of GOL in Python with in terminal view and window interf
 - Python 3.x
 - Pygame 2.6.x
 
-## Dependencies
-- Python 3.x
-- Pygame 2.6.x
-
 Install dependencies with:
 ```sh
 pip install pygame
@@ -32,10 +28,10 @@ Run with python `src/main.py`
 ```sh
 python ./src/main.py --size 10 --iteration 10 --seed 5 --activateGui True
 ```
+You can change values, if you want to generate a random seed, simply omit the ``--seed`` parameter.
+
 ![Screenshot2](./imgs/gui.png)
 *This is the GUI version of the simulation using Pygame.*
-
-You can change values, if you want to generate a random seed, simply omit the ``--seed`` parameter.
 
 ## Changelog:
 - **v1.1**
